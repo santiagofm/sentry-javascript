@@ -7,8 +7,11 @@ describe('hasTracingEnabled', () => {
     ['No options', undefined, false],
     ['No tracesSampler or tracesSampleRate', {}, false],
     ['With tracesSampler', { tracesSampler }, true],
+    ['With tracesSampler undefined', { tracesSampler: undefined }, false],
     ['With tracesSampleRate', { tracesSampleRate }, true],
+    ['With tracesSampleRate undefined', { tracesSampleRate: undefined }, false],
     ['With tracesSampler and tracesSampleRate', { tracesSampler, tracesSampleRate }, true],
+    ['With tracesSampler undefined and tracesSampleRate', { tracesSampler: undefined, tracesSampleRate }, true],
   ])(
     '%s',
     (_: string, input: Parameters<typeof hasTracingEnabled>[0], output: ReturnType<typeof hasTracingEnabled>) => {

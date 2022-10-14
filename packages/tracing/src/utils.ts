@@ -25,7 +25,7 @@ export function hasTracingEnabled(
 ): boolean {
   const client = getCurrentHub().getClient();
   const options = maybeOptions || (client && client.getOptions());
-  return !!options && ('tracesSampleRate' in options || 'tracesSampler' in options);
+  return !!options && (options.tracesSampleRate !== undefined || options.tracesSampler !== undefined);
 }
 
 /** Grabs active transaction off scope, if any */
